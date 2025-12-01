@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register – MyApp</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", Arial;
+            background: linear-gradient(135deg, #4a90e2, #8ec5fc);
+            height: 100vh;
+            color: white;
+        }
+        .card {
+            width: 420px;
+            margin: 140px auto;
+            padding: 35px;
+            background: rgba(255,255,255,0.25);
+            backdrop-filter: blur(10px);
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+            animation: fadeIn 1.2s ease-in-out;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        label {
+            display: block;
+            margin: 10px 0 6px;
+            font-size: 14px;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            font-size: 15px;
+        }
+        .btn {
+            width: 100%;
+            padding: 14px;
+            margin-top: 20px;
+            background: white;
+            color: #4a90e2;
+            font-size: 17px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: 600;
+        }
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+
+</head>
+<body>
+
+{% include 'navbar.html' %}
+
+<div class="card">
+    <h2>Create Account</h2>
+
+    <label>Email</label>
+    <input type="text" id="email">
+
+    <label>Password</label>
+    <input type="password" id="password">
+
+    <label>Name</label>
+    <input type="text" id="name">
+
+    <button class="btn" onclick="registerUser()">Register</button>
+</div>
+
+<script>
+function registerUser() {
+    let data = {
+        email: document.getElementById("email").value,
+        password: document.getElementById("password").value,
+        name: document.getElementById("name").value
+    };
+
+    fetch("/api/register/", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(data => {
+        alert(data.message);
+        if (data.status === "success") {
+            window.location.href = "/login/";
+        }
+    });
+}
+</script>
+
+</body>
+</html>

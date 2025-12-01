@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard – MyApp</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", Arial;
+            background: linear-gradient(135deg, #4a90e2, #8ec5fc);
+            color: white;
+        }
+
+        .container {
+            margin-top: 140px;
+            width: 90%;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        .header {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.25);
+            padding: 25px;
+            border-radius: 14px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 22px rgba(0,0,0,0.3);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            font-size: 22px;
+        }
+
+        .logout-btn {
+            margin-top: 40px;
+            padding: 14px 28px;
+            background: white;
+            color: #e74c3c;
+            font-size: 17px;
+            border-radius: 10px;
+            cursor: pointer;
+            border: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .logout-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+        }
+
+        @keyframes fadeIn {
+            from{opacity:0; transform:translateY(20px);}
+            to{opacity:1; transform:translateY(0);}
+        }
+    </style>
+
+</head>
+<body>
+
+{% include 'navbar.html' %}
+
+<div class="container">
+    <div class="header">Dashboard</div>
+
+    <div class="features">
+
+        <div class="card">
+            <h3>User Profile</h3>
+            <p>See and edit your account details.</p>
+        </div>
+
+        <div class="card">
+            <h3>Manage Employees</h3>
+            <p>Add, update, delete records stored in data.json</p>
+        </div>
+
+        <div class="card">
+            <h3>Settings</h3>
+            <p>Adjust application preferences.</p>
+        </div>
+
+    </div>
+
+    <button class="logout-btn" onclick="logout()">Logout</button>
+</div>
+
+<script>
+function logout() {
+    alert("Logged out!");
+    window.location.href = "/login/";
+}
+</script>
+
+</body>
+</html>

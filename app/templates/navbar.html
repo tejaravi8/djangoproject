@@ -1,0 +1,74 @@
+<style>
+
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 16px 10px;
+        background: rgba(255,255,255,0.12);
+        backdrop-filter: blur(12px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 999;
+        font-family: "Segoe UI", Arial;
+        color: white;
+    }
+
+    /* Brand */
+    nav .brand {
+        font-size: 26px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        white-space: nowrap;
+    }
+
+    /* Menu container with controlled width */
+    nav .links {
+        display: flex;
+        gap: 25px;
+        align-items: center;
+
+        /* 🟢 This keeps menu items from floating too far to the right */
+        margin-right: 20px;
+    }
+
+    nav .links a {
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        transition: 0.2s;
+        padding: 4px 8px;
+        white-space: nowrap;
+    }
+
+    nav .links a:hover {
+        opacity: 0.8;
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+        nav {
+            padding: 16px 20px;
+        }
+        nav .links {
+            gap: 15px;
+        }
+        nav .brand {
+            font-size: 20px;
+        }
+    }
+
+</style>
+
+<nav>
+    <div class="brand">MyApp</div>
+
+    <div class="links">
+        <a href="/">Home</a>
+        <a href="/login/">Login</a>
+        <a href="/register/">Register</a>
+        <a href="/dashboard/">Dashboard</a>
+    </div>
+</nav>

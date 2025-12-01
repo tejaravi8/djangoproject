@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MyApp – Home</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(135deg, #4a90e2, #8ec5fc);
+            height: 100vh;
+            color: white;
+        }
+
+        /* NAVBAR */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 40px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(8px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 20;
+        }
+        nav h2 {
+            font-size: 26px;
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        nav .links a {
+            margin-right: 80px;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: 0.2s;
+        }
+        nav .links a:hover {
+            opacity: 0.7;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 0 20px;
+        }
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .hero p {
+            font-size: 20px;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+
+        /* BUTTONS */
+        .btn {
+            padding: 14px 30px;
+            font-size: 18px;
+            color: #4a90e2;
+            background: white;
+            border-radius: 10px;
+            border: none;
+            margin: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: 600;
+        }
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+        }
+
+        /* ANIMATIONS */
+        .fade {
+            animation: fadeIn 1.2s ease-in-out forwards;
+            opacity: 0;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <h2>MyApp</h2>
+    <div class="links">
+        <a href="/">Home</a>
+        <a href="/login/">Login</a>
+        <a href="/register/">Register</a>
+    </div>
+</nav>
+
+<!-- HERO SECTION -->
+<div class="hero fade">
+    <h1>Welcome to MyApp</h1>
+    <p>Your modern and simple application to manage employees, login, register, and more — built with Django & REST API.</p>
+
+    <div>
+        <a href="/login/"><button class="btn">Login</button></a>
+        <a href="/register/"><button class="btn">Register</button></a>
+    </div>
+</div>
+
+</body>
+</html>

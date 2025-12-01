@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login – MyApp</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", Arial;
+            background: linear-gradient(135deg, #4a90e2, #8ec5fc);
+            height: 100vh;
+            color: white;
+        }
+        .card {
+            width: 420px;
+            margin: 140px auto;
+            padding: 35px;
+            background: rgba(255,255,255,0.25);
+            backdrop-filter: blur(10px);
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+            animation: fadeIn 1.2s ease-in-out;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        label {
+            font-size: 14px;
+            margin: 10px 0 6px;
+            display: block;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            font-size: 15px;
+        }
+        .btn {
+            width: 100%;
+            margin-top: 20px;
+            padding: 14px;
+            background: white;
+            color: #4a90e2;
+            border-radius: 10px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            border: none;
+        }
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+        }
+    </style>
+
+</head>
+<body>
+
+{% include 'navbar.html' %}
+
+<div class="card">
+    <h2>Account Login</h2>
+
+    <label>Email</label>
+    <input type="text" id="email">
+
+    <label>Password</label>
+    <input type="password" id="password">
+
+    <button class="btn" onclick="loginUser()">Login</button>
+</div>
+
+<script>
+function loginUser() {
+    let data = {
+        email: document.getElementById("email").value,
+        password: document.getElementById("password").value
+    };
+
+    fetch("/api/login/", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.status === "success") {
+            alert("Welcome " + data.user.name);
+            window.location.href = "/dashboard/";
+        } else {
+            alert(data.message);
+        }
+    });
+}
+</script>
+
+</body>
+</html>
